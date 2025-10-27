@@ -1,0 +1,115 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Lovable/ShadCN Color Variables for base */
+@layer base {
+  :root {
+    --background: 220 85% 8%; /* Very dark blue for main background */
+    --foreground: 210 40% 98%; /* Light text color */
+
+    --card: 220 75% 10%; /* General card/panel background */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 75% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%; /* Main blue accent */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 60% 15%; /* Lighter dark blue for hover/subtle elements */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 50% 18%; /* Muted backgrounds */
+    --muted-foreground: 215 20% 65%; /* Muted text */
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 40% 20%; /* Dark border color */
+    --input: 220 50% 18%; /* Input background */
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem; /* Rounded corners radius */
+
+    /* Specific overrides for sidebar to match screenshot's exact dark blue */
+    --sidebar-background: 218 50% 7%; /* A bit darker, more purplish dark blue */
+    --sidebar-border: 220 20% 15%; /* Darker border for sidebar */
+    --sidebar-accent: 220 20% 10%; /* Hover state in sidebar */
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: hsl(var(--foreground));
+
+    /* Custom background with subtle glow and triangular pattern */
+    background-color: hsl(var(--background));
+    background-image: 
+        radial-gradient(circle at center, rgba(var(--primary), 0.05) 0%, transparent 60%),
+        /* Subtle glowing border around the main content area */
+        linear-gradient(to right, #00C6FF, #0072FF),
+        /* Faint triangles pattern */
+        url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="%230e162f" fill-opacity="0.2"><path d="M20 20.5L0 0.5H40L20 20.5Z" /><path d="M0 20.5L20 0.5L40 20.5L20 40.5L0 20.5Z" /></g></svg>');
+    background-size: cover, 100% 100%, 40px 40px;
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Styles (Kept glass, gradient-text, input-glass, custom scrollbar) */
+.glass {
+  background: hsla(var(--card), 0.9);
+  border: 1px solid hsla(var(--border), 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Gradient text for Jalebi logo and potentially other elements */
+.gradient-text {
+  /* Using the specific colors from the screenshot */
+  background: linear-gradient(90deg, #0ea5e9 0%, #f97316 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom scrollbar matching the screenshot's scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background: #1a73e8; /* A vibrant blue for the thumb */
+  border-radius: 8px; 
+  border: 3px solid hsl(var(--background)); /* Matches the main background color */
+}
+
+/* Custom glow effect around the main content area to match screenshot */
+.main-content-glow {
+  position: relative;
+  border-radius: var(--radius); /* Inherit border radius */
+  /* This creates the blue glowing border effect */
+  box-shadow: 
+    0 0 0 1px rgba(0, 198, 255, 0.5), /* Inner thin border */
+    0 0 20px rgba(0, 114, 255, 0.4), /* Blue glow */
+    0 0 40px rgba(0, 114, 255, 0.2); /* Wider, softer blue glow */
+  overflow: hidden; /* Important for inner content to not overflow the rounded corners */
+}
