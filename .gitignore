@@ -1,20 +1,25 @@
-# Node (frontend)
+# Node (React frontend)
 node_modules/
 build/
 dist/
 .env
-frontend/.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Python (backend)
+# Python (Backend)
 __pycache__/
-venv/
 *.pyc
-backend/.env
-
-# Environment files
-.env
+*.pyo
+*.pyd
+env/
+venv/
 *.env
-
-# OS files
+*.log
 .DS_Store
+
+# VSCode and system files
+.vscode/
+.idea/
+*.swp
 Thumbs.db
